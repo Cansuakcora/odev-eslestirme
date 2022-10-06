@@ -26,7 +26,9 @@ for (fotoNumara of fotoNumaralari) {
     yenikart.addEventListener("click", kartTiklama);
 }
 
-let sayac = 0
+let sayac = 0;
+let gif = document.querySelector(".gif");
+let body = document.querySelector("body");
 
 function kartTiklama(olay) {
     //Tıklanan kartı seçilen olarak değişkene atayalım
@@ -80,6 +82,17 @@ function kartTiklama(olay) {
         let puan = document.querySelector("span");
         sayac ++;
         puan.textContent = sayac
+
+        if(puan.textContent == 4){
+            gif.classList.add("d-block");
+            body.classList.add("bg-black");
+            document.querySelector("div#oyun-cerceve").classList.add("d-none");
+            setTimeout(() => {
+               gif.classList.remove("d-block");
+               body.classList.remove("bg-black");
+               document.querySelector("div#oyun-cerceve").classList.remove("d-none");
+          }, 4000);
+        }
 
         setTimeout(() => {
             acikKart.removeEventListener("click", kartTiklama);
